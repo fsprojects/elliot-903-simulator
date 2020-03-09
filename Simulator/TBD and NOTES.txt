@@ -1,0 +1,179 @@
+﻿
+01-FEB-2012: Introduced ReEstablishInitialInstructions to get cases right for 920B, 920C and 900.
+04-FEB-2012: Fixed bug in ReEstablishInitialInstructions (to handle 8K 903 correctly).
+09-FEB-2012: Changed JUMP command to accept any constant (e.g., octal numbers).
+09-FEB-2012: Enabled MODE1 and MODE3 versions of ATtach for 920 telecode.
+10-FEB-2012: \ allowed as substiute for £ in 920 telecode.
+19-FEB-2012: VERIFY command renamed VERIFYIMAGE.
+20-FEB-2012: COMPARE command modified to diagnose tape punching errors.
+21-FEB-2012: COMPARE now counts positions from 0.
+24-FEB-2012: Introduced "initialInstructionsEnabled" flag.
+29-FEB-2012: Changed handling of \r and \n in teletype input.
+01-MAR-2012: TurnOn/TurnOff ensure all devices are closed.
+13-MAR-2012: Initial instructions handling re-written to follow 920C model.
+30-MAR-2012: RESET clears monitor points and re-establishes initial instructions.
+             RESET etc set levelActive.[1] to true (was [4]).
+			 Should NONPRINTING affect paper tape output?
+			 RESET closes all devices and resets NOPRINTING, TRACE, MONITOR, BREAK, NONSTOP, TTYTELECODE.
+01-APR-2012: Added NL | NONL options to AT TTYIN INLINE, AT TTYIN TTY.
+02-APR-2012: Further improvements to handling of TTYIN INLINE.
+05-APR-2012: Detects when in a loop punching the same character and stops after 100 characters.
+07-APR-2012: FIND <value> command added.  Fixed bug in handling negarive numbers in GetConstant.
+		     DUMPASSIR command added.
+09-APR-2012: Added TIDYUP, NEWLINE ON|OFF, TELECODE ttt, SELECT IN|OUT |PTR|AUTO|TTY|PTP, TIDYUP.
+10-APR-2012: Telecodes aligned with manual.  Tinkering with NEWLINE handling for TTY
+11-APR-2012: Improvements to NEWLINE handling and DUMPASSIR.
+15-APR-2012: Runout leader and trailer added Text and Binary files.
+			 Improved handling of visibles headers in text files.
+17-APR-2012: Improved continuation after report of repeated punching.
+18-APR-2012: Added RUNOUT command.  Run out now only added to text files.
+21-APR-2012: Added FIND f n and REVerse f.
+27-APR-2012: 920M max memory 16K, 5 and 2 musec store allowed.
+27-APR-2012: <!!> at end of line terminates INLINE.  TTY INLINE BIN added.
+30-APR-2012: Started SCBDecode
+01-MAY-2012: SCBDecode for X4, X12, X17 loaders, clear store etc added.
+02-MAY-2012: SCBDecode for ACD binary format added.
+03-MAY-2012: SCBDecode for T23 binary format added.
+11-MAY-2012: 901 added as synonym for 920A.
+11-MAY-2012: minor tidies to handling of B modification.
+14-MAY-2012: Minor tidies to "initialInstructionsEnabled" handling.
+16-MAY-2012: Additional loaders - ALGOL, MASIR.
+18-MAY-2012: Additional loader - PERT.
+05-JUN-2012: Started TRACKER command; TRACE ON level, TRACE OFF level added.
+06-JUN-2012: Trace interrupts force continuous interrupt on level.  
+             15 7168 protected.
+			 InitialInstruction enable/disable improved to make XINIT work.
+16-JUN-2012: VerifyImage tided.
+20-JUN-2012: TRACKER command commented out pending further development.
+			 Fixed bug in AT PTP FILE XXX.TXT.
+02-JUL-2012: LEGIBLE command added.
+03-JUL-2012: Command module spilt into RLB, FileHandling, Loader, Commands, Shell.
+05-JUL-2012: RAW files allowed with LEGIBLE.
+06-JUL-2012: <! ddd !> escapes interpreted and improvements to text decoding.
+12-JUL-2012: BREAK forces finish unless if nonstop on.
+20-JUL-2012: Teletype overrun detection added.
+23-JUL-2012: 4K 920A support added (configuration, initial instructions).
+11-AUG-2012: Plotter window size adjusted to match DGNH libraries.
+22-AUG-2012: Plotter code rewritten to use bitmaps.
+28-AUG-2012: Started experimenting with standard 903 plotting
+29-AUG-2012: YieldToDevices () added and more cosnidered use of event Send vs. Post in Devices.
+29-AUG-2012: FAST & SLOW commands implemented.
+30-AUG-2012: Minor fix to window sizing for plotting.
+05-SEP-2012: SWAPXY command added.
+17-SEP-2012: SCALE command added.  ORIGIN, SWAPXY, SCALE start new plotter window.
+25-SEP-2012: UTFOf t920 020 -> \r\n.
+27-SEP-2012: Line printer support added.
+28-SEP-2012: Line printer timing added.
+01-OCT-2012; FIXRLB checks from and to files are .RLB, .BIN or .RAW.  Mode 1 option added.
+02-OCT-2012: Handling of RLB global commands tidied up.
+11-OCT-2012: Started RLBTOSIR command.
+15-OCT-2012: RLBTOSIR completed.
+20-OCT-2012: Card reader started.
+23-OCT-2012: Handling of unattached input revised.
+26-OCT-2012: Card reader and line printer working together correctly (revised interrupt handling).
+29-OCT-2012: Add CheckCard to allow status to report hopper empty early.  Added label comments to RLBTOSIR
+02-NOV-2012: Restructured devices module.
+03-NOV-2012: Added check for attempt to output > 120 characters to lineprinter.
+07-NOV-2012: Initial version of magnetic tape support working.
+09-NOV-2012: Multi-step magnetic tape transfers working.
+11-NOV-2012: Rewind timing added.
+13-NOV-2012: Tidied up handling of mag tape times, including status cancel effect.
+13-NOV-2012: 15 7168 in level 4 made a no-op.
+14-NOV-2012: Magnetic tape interrupts added.
+15-NOV-2012: Magnetic tape parity checking added.
+17-NOV-2012: DumpAsSir produces more information (location, instruction, octal and integer)
+21-NOV-2012: Fixed bugs in backspace and erase handling (parity field).
+27-NOV-2012: Limit card reader, line printer and magnetic tape to 920B, online adaptor to 920B & C.
+10-DEC-2012: Magnetic tape timing code inproved, printer and card reader manual attention if detatched.
+13-DEC-2012: º for sub 10.  15 6148 enabled for 920M.
+21-DEC-2012: MT timings adjusted to make XMT71 work.  Unhappy about two different tapes stop times for writing - c.f. Test 9 & Test 19
+21-DEC-2012: Added facility to input fractions to ENTER, FIND and KEYS.
+23-DEC-2012: Further tides to MT interrupt timing.  Minor error in DUMPASSIR fixed.
+30-DEC-2012: Allow ½ in 900 and ACD telecodes.
+02-JAN-2012: MTStatus interrupt reset moved to after MTClose call, fixes spurious XMT71 missed transfer. Timing bug in MTWriteBlock fixed.
+07-JAN-2013: ❿ allowed in 920 and 903 input.
+11-JAN-2013: Improved error reporting for text input translation.
+13-JAN-2013: DumpAsSIR prints 2-8179 in first module.
+14-JAN-2013: Improvements to handling of skips in DumpAsSIR.
+19-JAN-2013: Added T23(ISS3) to SCBDecode.
+21-JAN-2013: Allow input to be longer than a reel of paper tape.
+07-FEB-2013: Fixed bug in handling of skips in DumpAsSir.
+09-FEB-2013: Fixed bug in tracing initial instructions reading memory rather than instructions.
+09-FEB-2013: ALGOL 16k LP "prelude" renamed as extended store clear.
+12-FEB-2013: Q behaviour on modification for 900 and 920M removed.
+12-FEB-2013: All shifts upto 48 places for 903.
+14-FEB-2013: Handling of RUNOUT command fixed in TranslateToText.
+16-FEB-2013: 920M B-modification behaviour made the same as 920B (exact behaviour unknown except "affected").
+16-FEB-2013: Fixed bug in 920M right shift.
+14-MAR-2013: Added SKIP command (skips over e.g., legible headers).
+14-MAR-2013: Added AUTO for Autostart.
+25-MAR-2013: Improved tty input.
+18-APR-2013: Fixed bug in interactive tty input - failed to clear buffer.
+20-MAY-2013: RESTART address command added - resume and stop at address.
+20-MAY-2013: VerifyImage ignores initial instructions.
+21-MAY-2013: DumpAsSir uses module addresses, shows character codes.
+07-JUN-2013: DumpAsSir layout improved.
+23-JUN-2013: PRINTALG added.
+01-AUG-2013: Print ALGOL rlb primitives tided up.
+20-AUG-2013: DUmpAsSir produces a valid 2-pass SIR program.
+30-AUG-2013: SCB correctly decodes Hunter ALGOL 16K LG tape.
+08-SEP-2013: PrintALG decoding improved.
+26-SEP-2013: Shift timing corrected.
+17-DEC-2013: Teletype input in online mode error fixed.
+29-DEC-2013: Closing tty forces a push.
+31-DEC-2013: YieldToDevices before reading a command.
+01-JAN-2014: Yields added on all stopping conditions in Machine.fs.
+06-JAN-2014: Timers and counts reset in Tidy but not in Reset.
+15-JAN-2014: Tracing of 15 7168 improved.
+07-APR-2014: GETADD in PRINTALGOL.
+22-APR-2014: Improved handling of HALT in AlgolRLB.
+23-APR-2014: Use of RichTextBox to stop flicker on tty output etc
+25-APR-2014: Add copy in context menu for RichTextBox.
+01-MAY-2014: Stop on syntax error even in NONSTOP mode added.
+07-MAY-2014: Algol stack trace facilities.
+10-MAY-2014: Algol instruction trace facilities.
+12-MAY-2014: Added formal parameters to stack trace.
+21-MAY-2014: Fixed bug in ALGOL tracing.
+24-MAY-2014: Changed format of loop stop output.
+27-MAY-2014: TRACEREGION accepts addresses arguments.
+03-JUL-2014: Minor tidy to Algol instruction names.
+18-AUG-2014: Instruction trace buffer added.
+05-SEP-2014: STOP command permits address > 8191
+29-OCT-2014: SCB for C&G loader.
+20-NOV-2014: Revised DumpAsSIR.
+16-DEC-2014: JUMPII added and JUMP modified for 920C.
+29-DEC-2014: Revised DumpAsSIR.
+23-FEB-2015: Bug fix in ACD Loader.
+06-MAR-2015: Bug fix in DecodeRLB handling of ABSOLUTE and HALT 15.
+24-MAR-2015: Plotter instructions enabled for 900 machine model.
+01-APR-2015: 15 7174 and 15 7175 instructions corrected.
+17-APR-2015: AldRLB T23 in SCBDecode.
+19-APR-2015: AldRLB locator in SCBDecode.
+20-APR-2015: Support for 4K 920A.
+05-MAY-2015: Correct handling of negative SCR.
+24-May-2015: Correct ahndling of SCR on J, JII, Restart.
+26-MAY-2015: Jump and JII set relative to true.
+31-MAY-2015: 905 Jump sets level 1, step and stop address limits distinguished,
+			 improved handling of initial orders store.
+20-JUN-2015: On resets i/o selection.
+22-JUN-2015: Tidy resets Algol tracing.
+03-AUG-2015: Teletype input lock out improved.
+12-AUG-2015: Attempt to improve psuhing of plotter window.
+13-OCT-2015: Handling of £ and # modified.
+15-OCT-2015: Bug in handling of e.g., <! 200 !> fixed.
+21-OCT-2015: TXT file type introduced for "ASCII". \r\n output sequences made just \n.
+30-OCT-2015: Correct error if punch used when no file attached.  Plotter XY orietatation swapped.
+27-NOV-2015: Punch output limit increased.
+22-SEP-2016: Updated times for 4K and 8K 920A.
+27-MAR-2017: Fixed error message for incorrect store configurations.
+27-MAR-2017: Added teletype I/O for 920A.
+13-APR-2017: S register 13 bits for 920A, 16 for 920B, 920M, 17 bits for 920C
+16-APR-2017: Correct handling of /r/n and /n in <! Legible sequences
+17-APR-2017: Fixed bug in parsing of <! 9 !>
+14-MAY-2017: SH T resets instruction count
+06-JUN-2017: NEWLINE made to work for TTY INLINE
+14-JUN-2017: Improved SCR handling, especially for 920C
+17-JUN-2017: SkipBlanks fixed
+24-JUN-2017: EnterLevel saves old level
+28-JUL-2019: TranslateFromText modified to convert \n into cr lf
+29-AUG-2019: PERT table decode
